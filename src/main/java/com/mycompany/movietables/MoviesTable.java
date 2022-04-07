@@ -1,0 +1,415 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package com.mycompany.movietables;
+
+import com.mycompany.movietables.repositories.MovieRepository;
+import entities.Movie;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author tashima-utfpr
+ */
+public class MoviesTable extends javax.swing.JFrame {
+
+    private final MovieRepository movieRepository;
+    private Integer currentMoviePosition = 0;
+    private ArrayList<Movie> movies;
+
+    /**
+     * Creates new form NewJFrame
+     */
+    public MoviesTable() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        this.movieRepository = new MovieRepository();
+        initComponents();
+
+        getAllMovies();
+        fillTable();
+    }
+
+    private void getAllMovies() {
+        this.movies = this.movieRepository.getAll();
+    }
+
+    private void fillTable() {
+        fillTableFields(getCurrentMovie());
+    }
+
+    private void fillTableFields(Movie movie) {
+        codeField.setText(movie.getCode());
+        titleField.setText(movie.getTitle());
+        genreField.setText(movie.getGenre());
+        productionField.setText(movie.getProduction());
+        buyingDateField.setText(movie.getBuyingDate());
+    }
+
+    private void goBackOneRecord() {
+        updateOrSave();
+        if (this.currentMoviePosition > 0) {
+            Integer newPosition = this.currentMoviePosition - 1;
+            this.currentMoviePosition = newPosition;
+        }
+        fillTable();
+    }
+
+    private void goBackTenRecords() {
+        updateOrSave();
+        if (this.currentMoviePosition > 10) {
+            Integer newPosition = this.currentMoviePosition - 10;
+            this.currentMoviePosition = newPosition;
+        }
+        fillTable();
+    }
+
+    private void goForwardOneRecord() {
+        updateOrSave();
+        if (this.currentMoviePosition < this.movies.size() - 1) {
+            Integer newPosition = this.currentMoviePosition + 1;
+            this.currentMoviePosition = newPosition;
+        }
+        fillTable();
+    }
+
+    private void goForwardTenRecords() {
+        updateOrSave();
+        if (this.currentMoviePosition < this.movies.size() - 10) {
+            Integer newPosition = this.currentMoviePosition + 10;
+            this.currentMoviePosition = newPosition;
+        }
+        fillTable();
+    }
+
+    private void addMovie() {
+
+    }
+
+    private void cleanFields() {
+        this.currentMoviePosition = -1;
+        codeField.setText("");
+        titleField.setText("");
+        genreField.setText("");
+        productionField.setText("");
+        buyingDateField.setText("");
+    }
+
+    private void removeMovie() {
+        Integer id = getCurrentMovie().getId();
+        this.movieRepository.remove(id);
+        if (this.currentMoviePosition.equals(this.movies.size())) {
+            this.currentMoviePosition = this.currentMoviePosition - 1;
+        }
+        getAllMovies();
+        fillTable();
+    }
+
+    private Movie getMovieFromFields() {
+        String code = codeField.getText();
+        String title = titleField.getText();
+        String genre = genreField.getText();
+        String production = productionField.getText();
+        String buyingDate = buyingDateField.getText();
+
+        return new Movie(code, title, genre, production, buyingDate, null);
+    }
+
+    private void updateOrSave() {
+        if (this.currentMoviePosition == -1) {
+            this.movieRepository.add(this.getMovieFromFields());
+            getAllMovies();
+            this.currentMoviePosition = this.movies.size() - 1;
+            fillTable();
+        }
+        if (fieldsHaveChanges()) {
+            Movie movieFromFields = getMovieFromFields();
+            movieFromFields.setId(getCurrentMovie().getId());
+            this.movieRepository.update(movieFromFields);
+            getAllMovies();
+            fillTable();
+        }
+    }
+
+    private Boolean fieldsHaveChanges() {
+        Movie currentMovie = getCurrentMovie();
+        Movie fieldsMovie = getMovieFromFields();
+        if (!currentMovie.getCode().equals(fieldsMovie.getCode())) {
+            return true;
+        }
+        if (!currentMovie.getTitle().equals(fieldsMovie.getTitle())) {
+            return true;
+        }
+        if (!currentMovie.getGenre().equals(fieldsMovie.getGenre())) {
+            return true;
+        }
+        if (!currentMovie.getProduction().equals(fieldsMovie.getProduction())) {
+            return true;
+        }
+        return !currentMovie.getBuyingDate().equals(fieldsMovie.getBuyingDate());
+    }
+
+    private Movie getCurrentMovie() {
+        return this.movies.get(this.currentMoviePosition);
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        codeLabel = new javax.swing.JLabel();
+        codeField = new javax.swing.JTextField();
+        titleLabel = new javax.swing.JLabel();
+        titleField = new javax.swing.JTextField();
+        productionField = new javax.swing.JTextField();
+        buyingDateLabel = new javax.swing.JLabel();
+        buyingDateField = new javax.swing.JTextField();
+        productionLabel = new javax.swing.JLabel();
+        genreField = new javax.swing.JTextField();
+        genreLabel = new javax.swing.JLabel();
+        goBackTenRecordsButton = new javax.swing.JButton();
+        goBackOneRecordButton = new javax.swing.JButton();
+        goForwardOneRecordButton = new javax.swing.JButton();
+        goForwardTenRecordsButton = new javax.swing.JButton();
+        addRecordButton = new javax.swing.JButton();
+        removeRecordButton = new javax.swing.JButton();
+        quitApplication = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        codeLabel.setText("Code");
+
+        codeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codeFieldActionPerformed(evt);
+            }
+        });
+
+        titleLabel.setText("Title");
+
+        buyingDateLabel.setText("Buying date");
+
+        productionLabel.setText("Production");
+
+        genreLabel.setText("Genre");
+
+        goBackTenRecordsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                goBackTenRecordsButtonMouseClicked(evt);
+            }
+        });
+
+        goBackOneRecordButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                goBackOneRecordButtonMouseClicked(evt);
+            }
+        });
+
+        goForwardOneRecordButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                goForwardOneRecordButtonMouseClicked(evt);
+            }
+        });
+
+        goForwardTenRecordsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                goForwardTenRecordsButtonMouseClicked(evt);
+            }
+        });
+
+        addRecordButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addRecordButtonMouseClicked(evt);
+            }
+        });
+
+        removeRecordButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removeRecordButtonMouseClicked(evt);
+            }
+        });
+
+        quitApplication.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quitApplicationMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(codeLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(genreLabel)
+                                .addGap(2, 2, 2)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(genreField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4))
+                            .addComponent(codeField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(productionLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(productionField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buyingDateLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buyingDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(titleLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(titleField)))
+                        .addGap(21, 21, 21))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(goBackTenRecordsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(goBackOneRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(goForwardOneRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(goForwardTenRecordsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(removeRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(quitApplication, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codeLabel)
+                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleLabel)
+                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(genreLabel)
+                    .addComponent(genreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(productionLabel)
+                    .addComponent(productionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buyingDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buyingDateLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(goBackTenRecordsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goBackOneRecordButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goForwardOneRecordButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goForwardTenRecordsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addRecordButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeRecordButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quitApplication, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void codeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codeFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codeFieldActionPerformed
+
+    private void goBackOneRecordButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackOneRecordButtonMouseClicked
+        goBackOneRecord();
+    }//GEN-LAST:event_goBackOneRecordButtonMouseClicked
+
+    private void goForwardOneRecordButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goForwardOneRecordButtonMouseClicked
+        goForwardOneRecord();
+    }//GEN-LAST:event_goForwardOneRecordButtonMouseClicked
+
+    private void goBackTenRecordsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackTenRecordsButtonMouseClicked
+        goBackTenRecords();
+    }//GEN-LAST:event_goBackTenRecordsButtonMouseClicked
+
+    private void goForwardTenRecordsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goForwardTenRecordsButtonMouseClicked
+        goForwardTenRecords();
+    }//GEN-LAST:event_goForwardTenRecordsButtonMouseClicked
+
+    private void addRecordButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addRecordButtonMouseClicked
+        cleanFields();
+    }//GEN-LAST:event_addRecordButtonMouseClicked
+
+    private void removeRecordButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeRecordButtonMouseClicked
+        removeMovie();
+    }//GEN-LAST:event_removeRecordButtonMouseClicked
+
+    private void quitApplicationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitApplicationMouseClicked
+        
+    }//GEN-LAST:event_quitApplicationMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MoviesTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MoviesTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MoviesTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MoviesTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MoviesTable().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addRecordButton;
+    private javax.swing.JTextField buyingDateField;
+    private javax.swing.JLabel buyingDateLabel;
+    private javax.swing.JTextField codeField;
+    private javax.swing.JLabel codeLabel;
+    private javax.swing.JTextField genreField;
+    private javax.swing.JLabel genreLabel;
+    private javax.swing.JButton goBackOneRecordButton;
+    private javax.swing.JButton goBackTenRecordsButton;
+    private javax.swing.JButton goForwardOneRecordButton;
+    private javax.swing.JButton goForwardTenRecordsButton;
+    private javax.swing.JTextField productionField;
+    private javax.swing.JLabel productionLabel;
+    private javax.swing.JButton quitApplication;
+    private javax.swing.JButton removeRecordButton;
+    private javax.swing.JTextField titleField;
+    private javax.swing.JLabel titleLabel;
+    // End of variables declaration//GEN-END:variables
+}
