@@ -4,7 +4,7 @@
  */
 package com.mycompany.movietables.repositories;
 
-import entities.Movie;
+import com.mycompany.movietables.entities.Movie;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

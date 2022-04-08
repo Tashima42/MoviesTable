@@ -5,7 +5,7 @@
 package com.mycompany.movietables;
 
 import com.mycompany.movietables.repositories.MovieRepository;
-import entities.Movie;
+import com.mycompany.movietables.entities.Movie;
 import java.util.ArrayList;
 
 /**
@@ -80,10 +80,6 @@ public class MoviesTable extends javax.swing.JFrame {
             this.currentMoviePosition = newPosition;
         }
         fillTable();
-    }
-
-    private void addMovie() {
-
     }
 
     private void cleanFields() {
@@ -198,42 +194,61 @@ public class MoviesTable extends javax.swing.JFrame {
 
         genreLabel.setText("Genre");
 
+        goBackTenRecordsButton.setIcon(new javax.swing.ImageIcon("/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/arrow-down-sign-to-navigate.png")); // NOI18N
+        goBackTenRecordsButton.setMaximumSize(new java.awt.Dimension(90, 6));
+        goBackTenRecordsButton.setPreferredSize(new java.awt.Dimension(90, 6));
         goBackTenRecordsButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 goBackTenRecordsButtonMouseClicked(evt);
             }
         });
+        goBackTenRecordsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackTenRecordsButtonActionPerformed(evt);
+            }
+        });
 
+        goBackOneRecordButton.setIcon(new javax.swing.ImageIcon("/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/arrow.png")); // NOI18N
         goBackOneRecordButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 goBackOneRecordButtonMouseClicked(evt);
             }
         });
+        goBackOneRecordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackOneRecordButtonActionPerformed(evt);
+            }
+        });
 
+        goForwardOneRecordButton.setIcon(new javax.swing.ImageIcon("/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/right-arrow.png")); // NOI18N
         goForwardOneRecordButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 goForwardOneRecordButtonMouseClicked(evt);
             }
         });
 
+        goForwardTenRecordsButton.setIcon(new javax.swing.ImageIcon("/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/up-arrow.png")); // NOI18N
         goForwardTenRecordsButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 goForwardTenRecordsButtonMouseClicked(evt);
             }
         });
 
+        addRecordButton.setIcon(new javax.swing.ImageIcon("/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/plus.png")); // NOI18N
         addRecordButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addRecordButtonMouseClicked(evt);
             }
         });
 
+        removeRecordButton.setIcon(new javax.swing.ImageIcon("/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/minus.png")); // NOI18N
         removeRecordButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 removeRecordButtonMouseClicked(evt);
             }
         });
 
+        quitApplication.setIcon(new javax.swing.ImageIcon("/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/on-off-button.png")); // NOI18N
         quitApplication.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 quitApplicationMouseClicked(evt);
@@ -246,7 +261,7 @@ public class MoviesTable extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -273,23 +288,23 @@ public class MoviesTable extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(titleLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(titleField)))
-                        .addGap(21, 21, 21))
+                                .addComponent(titleField))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(goBackTenRecordsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(goBackTenRecordsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(goBackOneRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(goBackOneRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(goForwardOneRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(goForwardOneRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(goForwardTenRecordsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(goForwardTenRecordsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(removeRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(quitApplication, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(quitApplication, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,8 +326,9 @@ public class MoviesTable extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(goBackTenRecordsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goBackOneRecordButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goForwardOneRecordButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(goBackOneRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(goForwardOneRecordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(goForwardTenRecordsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addRecordButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removeRecordButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -352,8 +368,16 @@ public class MoviesTable extends javax.swing.JFrame {
     }//GEN-LAST:event_removeRecordButtonMouseClicked
 
     private void quitApplicationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitApplicationMouseClicked
-        
+        this.dispose();
     }//GEN-LAST:event_quitApplicationMouseClicked
+
+    private void goBackTenRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackTenRecordsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_goBackTenRecordsButtonActionPerformed
+
+    private void goBackOneRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackOneRecordButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_goBackOneRecordButtonActionPerformed
 
     /**
      * @param args the command line arguments

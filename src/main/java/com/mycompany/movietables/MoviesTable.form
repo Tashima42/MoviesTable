@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -25,8 +25,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="codeLabel" min="-2" max="-2" attributes="0"/>
@@ -61,25 +61,25 @@
                               <Component id="titleField" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="goBackTenRecordsButton" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="goBackTenRecordsButton" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="goBackOneRecordButton" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="goBackOneRecordButton" min="-2" pref="59" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="goForwardOneRecordButton" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="goForwardOneRecordButton" min="-2" pref="56" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="goForwardTenRecordsButton" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="goForwardTenRecordsButton" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="addRecordButton" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="addRecordButton" min="-2" pref="44" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="removeRecordButton" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="removeRecordButton" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="quitApplication" min="-2" pref="35" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="quitApplication" min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -105,8 +105,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="goBackTenRecordsButton" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="goBackOneRecordButton" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="goForwardOneRecordButton" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                      <Component id="goBackOneRecordButton" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="goForwardOneRecordButton" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="goForwardTenRecordsButton" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="addRecordButton" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="removeRecordButton" alignment="1" min="-2" pref="24" max="-2" attributes="0"/>
@@ -157,36 +159,79 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="goBackTenRecordsButton">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/arrow-down-sign-to-navigate.png"/>
+        </Property>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[90, 6]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[90, 6]"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="goBackTenRecordsButtonMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goBackTenRecordsButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="goBackOneRecordButton">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/arrow.png"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="goBackOneRecordButtonMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goBackOneRecordButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="goForwardOneRecordButton">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/right-arrow.png"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="goForwardOneRecordButtonMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="goForwardTenRecordsButton">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/up-arrow.png"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="goForwardTenRecordsButtonMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="addRecordButton">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/plus.png"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addRecordButtonMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="removeRecordButton">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/minus.png"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="removeRecordButtonMouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="quitApplication">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/tashima-utfpr/NetBeansProjects/movieTables/src/main/java/com/mycompany/movietables/assets/on-off-button.png"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quitApplicationMouseClicked"/>
       </Events>
